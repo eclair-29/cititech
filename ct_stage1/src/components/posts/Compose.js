@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
+// Actions 
+import { create_post } from '../../store/actions/post_actions'
+ 
 class Compose extends Component {
     state = {
         title: '',
@@ -14,7 +18,7 @@ class Compose extends Component {
 
     handle_submit = e => {
         e.preventDefault()
-        console.log(this.state)
+        this.props.create_post(this.state)
     }
 
     render() {
@@ -55,4 +59,10 @@ class Compose extends Component {
     }
 }
 
-export default Compose
+const mapDispatchToProps = dispatch => {
+    return {
+        create_post: post => dispatch(create_post(post))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Compose)

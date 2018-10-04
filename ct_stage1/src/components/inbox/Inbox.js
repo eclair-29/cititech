@@ -13,7 +13,7 @@ class Inbox extends Component {
                 {/* Posts List */}
                 <PostsList posts={ posts } />
                 
-                {/* Notifications */}
+                {/* Notifications */}9
                 <Notifications />
             </div>
         )

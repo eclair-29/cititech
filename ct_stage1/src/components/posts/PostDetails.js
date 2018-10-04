@@ -5,7 +5,7 @@ const PostDetails = () => {
         <div className="wrapper post-details">
             <div className="post-header">
                 <h4>Post Title: Admin emailed you</h4>
-                <span>Posted by: eclair.48</span>
+                <span>posted by: eclair.48</span>
             </div>
             <div className="post-content">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste accusantium sed, impedit totam ex consequatur odit alias reprehenderit voluptate laborum!</p>
