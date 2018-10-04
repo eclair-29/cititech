@@ -1,0 +1,66 @@
+@font-face 
+    font:
+        family: 'pangram'
+        style: normal
+        weight: 400
+
+    src: url(helpers/assets/fonts/Pangram-Regular.otf)
+
+@font-face 
+    font:
+        family: 'pangram_light'
+        style: normal
+        weight: 300
+
+    src: url(helpers/assets/fonts/Pangram-Light.otf)
+
+@font-face 
+    font:
+        family: 'pangram_medium'
+        style: normal
+        weight: 500
+
+    src: url(helpers/assets/fonts/Pangram-Medium.otf)
+
+body 
+    margin:  0
+    padding: 0
+
+h1, h2, h3, h4, h5, h6 
+    font:
+        family: pangram_medium !important 
+        weight: bold !important
+
+p 
+    font: 
+        family: pangram !important
+        size: 1rem !important
+        weight: normal
+    line-height: 25px !important
+    margin-bottom: 0 !important
+
+a 
+    font: 
+        family: pangram_medium !important
+        weight: 500 !important
+        
+
+div, main, section, header, nav, footer 
+span, label, strong, li 
+    font: 
+        family: pangram !important
+        size: 1rem !important
+        weight: normal
+
+#{$all-text-inputs}
+    border-radius: 0 !important
+    font: 
+        family: pangram !important
+        size: 0.9rem !important
+        weight: normal
+
+#{$all-buttons} 
+    border-radius: 0 !important
+    font: 
+        family: pangram !important
+        weight: normal

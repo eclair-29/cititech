@@ -1,0 +1,193 @@
+/* IMPORTS 
+   ======================================= */
+@import 'bourbon/bourbon'
+@import 'globals/globals'
+
+/* WRAPPERS 
+   ======================================= */
+.wrapper 
+    width: 100%
+    max-width: 580px
+    margin: 0 auto
+    padding: 0 20px
+
+/* CARD 
+   ======================================= */
+.card 
+    border-radius: 0            !important
+    box-shadow: none            !important
+    border: 1px solid #E0E0E0   !important
+    max-width: 100%             !important
+    width: 100%                 !important
+    margin: 20px 0              !important
+
+    .header 
+        font-size: 0.9rem       !important
+    
+    .meta 
+        font:
+            family: pangram     !important
+            size: 0.840rem      !important
+            weight: 400         !important
+        color: #009688          !important
+        margin-top: 5px
+
+    .description
+        font:
+            family: pangram     !important
+            size: 0.9rem        !important
+            weight: 400         !important
+
+        color: #757575          !important
+        line-height: 25px
+
+    .timestamp  
+        font-size: 0.840rem     !important
+        color: #BDBDBD
+
+/* NAV 
+   ======================================= */
+.nav 
+    max-width: 100% !important
+    padding: 0 40px !important
+    height: 50px
+    background: #00695C
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    .logo 
+        margin: 0 !important
+        font-size: 1rem 
+        color: #FFFFFF
+
+    .menu 
+        display: flex
+        align-items: center
+        height: inherit
+
+        li 
+            margin-left: 20px
+
+        a 
+            font: 
+                family: pangram_medium !important
+                size: 0.9rem !important
+                weight: 500
+            color: #B2DFDB
+
+/* NOTIFICATIONS 
+   ======================================= */
+.notifications
+    +size(350px, 100%)
+    +position(absolute, 50px 0 null null)
+    background: #FFFFFF
+    border: 1px solid #E0E0E0
+
+    @media only screen and (max-width: 800px)
+        right: -352px
+
+/* POSTS LIST 
+   ======================================= */
+.posts-list 
+    margin-top: 40px
+
+/* POST DETAILS 
+   ======================================= */
+.post-details
+    margin-top: 40px
+
+    .post-header > h4 
+        margin-bottom: 5px
+
+    .post-header > span 
+        font-size: 0.840rem !important 
+        color: #009688    
+
+    .post-content
+        margin-top: 20px
+
+        p 
+            font-size: 0.9rem !important
+            color: #757575         
+            line-height: 25px
+
+    .post-footer
+        margin-top: 20px 
+        
+        span 
+            font-size: 0.840rem !important
+            color: #BDBDBD
+
+/* PROFILE HEADER
+   ======================================= */
+.profile-header
+    display: flex
+    justify-content: space-between 
+    margin-top: 40px
+
+    .user > h4 
+        margin-bottom: 5px 
+
+    .user > span 
+        font-size: 0.9rem !important
+        color: #009688 
+
+    .posts-length
+        font-size: 0.9rem !important 
+        color: #009688   
+        text-align: right
+
+/* PROFILE HEADER
+   ======================================= */
+.profile-nav
+    margin-top: 20px
+    background: #FFFFFF
+    border: 1px solid #E0E0E0
+    height: 50px
+    padding: 0 30px
+
+    .menu 
+        display: flex
+        justify-content: space-between
+        align-items: center
+        height: inherit 
+
+    a 
+        font-size: 0.9rem !important
+        color: #009688 
+
+/* SIGN IN AND SIGN UP
+   ======================================= */
+.signin,
+.signup
+    max-width: 400px !important 
+    margin-top: 80px
+    background: #FFFFFF
+    border: 1px solid #E0E0E0
+    padding: 20px
+
+    .form 
+        width: 100%
+
+    h4 
+        margin-bottom: 30px 
+        text-align: center 
+
+    .button 
+        margin-top: 30px
+
+/* COMPOSE
+   ======================================= */
+.compose
+    max-width: 540px !important 
+    margin-top: 80px
+
+    h4 
+        margin-bottom: 30px
+
+    textarea 
+        resize: none !important
+
+    .button 
+        margin-top: 30px
