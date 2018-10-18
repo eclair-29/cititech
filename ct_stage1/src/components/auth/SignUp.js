@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+
+// Actions 
+import { signup } from '../../store/actions/auth_actions'
 
 class SignUp extends Component {
     state = {
-        fname: '',
-        lname: '',
+        firstName: '',
+        lastName: '',
         email: '',
-        password: ''
+        password: '',
+        username: ''
     }
 
     handle_change = e => {
@@ -16,12 +22,21 @@ class SignUp extends Component {
 
     handle_submit = e => {
         e.preventDefault()
-        console.log(this.state)
+        this.props.signup(this.state)
     }
 
     render() {
+        const { auth, authError } = this.props
+
+        //  Check if the user is signed in or not
+        if (auth.uid) return <Redirect  to='/' />
+
         return (
             <div className="wrapper signup">
+                { authError ? (
+                    <div className="ui red message">{  authError }</div>
+                ) : null }
+
                 <form 
                     className="ui small form"
                     onSubmit={ this.handle_submit }>
@@ -32,7 +47,7 @@ class SignUp extends Component {
                         <div className="field">
                             <input 
                                 type="text"
-                                id="fname" 
+                                id="firstName" 
                                 placeholder="First Name"
                                 onChange={ this.handle_change }
                             />
@@ -41,11 +56,20 @@ class SignUp extends Component {
                         <div className="field">
                             <input 
                                 type="text"
-                                id="lname" 
+                                id="lastName" 
                                 placeholder="Last Name"
                                 onChange={ this.handle_change }
                             />
                         </div>
+                    </div>
+
+                    <div className="field">
+                        <input 
+                            type="text"
+                            id="username" 
+                            placeholder="Username"
+                            onChange={ this.handle_change }
+                        />
                     </div>
 
                     <div className="field">
@@ -77,4 +101,11 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp
+const mapStateToProps = state => {
+    return {
+        auth: state.firebase.auth,
+        authError: state.auth.authError
+    }
+}
+
+export default connect(mapStateToProps, { signup })(SignUp)

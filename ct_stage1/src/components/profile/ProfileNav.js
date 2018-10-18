@@ -1,14 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const ProfileNav = () => {
+const ProfileNav = ({ match }) => {
     return (
         <nav className="profile-nav">
             <ul className="menu">
-                <li><NavLink to='/'>Posts</NavLink></li>
-                <li><NavLink to='/'>Todos</NavLink></li>
-                <li><NavLink to='/'>Activities</NavLink></li>
-                <li><NavLink to='/'>About</NavLink></li>
+                <li><NavLink to={ match.url }>Posts</NavLink></li>
+                <li><NavLink to={ `${match.url}/todos` }>Todos</NavLink></li>
+                <li><NavLink to={ `${match.url}/activities` }>Activities</NavLink></li>
+                <li><NavLink to={ `${match.url}/about` }>About</NavLink></li>
             </ul>
         </nav>
     )
