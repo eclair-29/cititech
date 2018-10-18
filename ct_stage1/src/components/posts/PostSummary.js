@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 const PostSummary = ({ post }) => {
     return (
         <Link to={ `/posts/${post.id}` }>
             <div className="ui card post-summary">
                 <div className="content">
-                    <h4 className="header">{ post.title }</h4>
-                    <div className="meta">posted by: { post.author }</div>
+                    <span className="header">{ post.title }</span>
+                    <div className="meta">posted by: { post.author_username }</div>
                 </div>
 
                 <div className="content">
@@ -18,13 +19,12 @@ const PostSummary = ({ post }) => {
                         WebkitLineClamp: 2,
                         WebkitBoxOrient: 'vertical',
                         overflow: 'hidden'
-                    }}>
-                        { post.content }
+                    }}>{ post.content }
                     </div>
                 </div>
 
                 <div className="extra content">
-                    <div className="timestamp">29th Nov. 4am</div>
+                    <div className="timestamp">{ moment(post.posted_at.toDate()).fromNow() }</div>
                 </div>
             </div>
         </Link>

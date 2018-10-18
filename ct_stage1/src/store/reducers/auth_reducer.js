@@ -1,7 +1,44 @@
-const initial_state = {}
+const initial_state = {
+    authError: null
+}
 
 const auth_reducer = (state = initial_state, action) => {
-    return state
+    switch (action.type) {
+        case 'SIGNIN_ERROR':
+            console.log('SIGNIN ERROR! it seemes your credentials are not right...')
+            return {
+                ...state, 
+                authError: action.err
+            }
+
+        case 'SIGNIN_SUCCESS':
+            console.log('SIGNIN SUCCESS! your credentials are logged in...')
+            return {
+                ...state, 
+                authError: null
+            }
+
+        case 'SIGNUP_SUCCESS': 
+            console.log('Congratulations! You successfully registered your account')
+            return {
+                ...state,
+                authError: null
+            }
+        
+        case 'SIGNUP_ERROR': 
+            console.log('Opps... it seems you have an error signing up')
+            return {
+                ...state,
+                authError: action.err
+            }
+
+        case 'SIGNOUT_SUCCESS': 
+            console.log('YOU ARE SIGNED OUT FROM YOUR ACCOUNT')
+            return state
+
+        default: 
+            return state
+    }
 }
 
 export default auth_reducer

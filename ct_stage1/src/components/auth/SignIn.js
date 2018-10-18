@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom' 
+
+// Actions 
+import { signin } from '../../store/actions/auth_actions'
 
 class SignIn extends Component {
     state = {
@@ -14,12 +19,21 @@ class SignIn extends Component {
 
     handle_submit = e => {
         e.preventDefault()
-        console.log(this.state)
+        this.props.signin(this.state)
     }
 
     render() {
+        const { authError, auth } = this.props
+
+        //  Check if the user is signed in or not
+        if (auth.uid) return <Redirect  to='/' />
+
         return (
             <div className="wrapper signin">
+                { authError ? (
+                    <div className="ui message red">{ authError }</div>
+                ) : null }
+                
                 <form 
                     className="ui small form"
                     onSubmit={ this.handle_submit }>
@@ -55,4 +69,11 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn
+const mapStateToProps = state => {
+    return {
+        authError: state.auth.authError,
+        auth: state.firebase.auth
+    }
+}
+
+export default connect(mapStateToProps, { signin })(SignIn)

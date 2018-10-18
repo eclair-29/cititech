@@ -1,16 +1,16 @@
 import React from 'react'
 
-const Activities = () => {
+const UserPosts = () => {
     return (
         <div className="user-posts">
             <h6 style={{
                 marginTop: '40px',
                 textAlign: 'center'
             }}>
-                Activities
+                Posts
             </h6>
         </div>
     )
 }
 
-export default Activities
+export default UserPosts

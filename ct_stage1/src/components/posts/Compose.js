@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 // Actions 
 import { create_post } from '../../store/actions/post_actions'
@@ -19,9 +20,15 @@ class Compose extends Component {
     handle_submit = e => {
         e.preventDefault()
         this.props.create_post(this.state)
+        this.props.history.push("/")
     }
 
     render() {
+        const { auth } = this.props
+
+        //  Check if the user is signed in or not
+         if (!auth.uid) return <Redirect  to='/signin' />
+
         return (
             <div className="wrapper compose">
                 <form 
@@ -59,10 +66,16 @@ class Compose extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         create_post: post => dispatch(create_post(post))
     }
 }
 
-export default connect(null, mapDispatchToProps)(Compose)
+export default connect(mapStateToProps, mapDispatchToProps)(Compose)

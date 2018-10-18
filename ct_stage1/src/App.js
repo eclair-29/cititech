@@ -22,10 +22,10 @@ class App extends Component {
 					{/* Routes */}
 					<Switch>
 						<Route exact path='/' component={ Inbox } />
-						<Route path='/posts/:id' component={ PostDetails } />
 						<Route path='/signin' component={ SignIn } />
 						<Route path='/signup' component={ SignUp } />
 						<Route path='/compose' component={ Compose } />
+						<Route path='/posts/:id' component={ PostDetails } />
 						<Route path='/:username' component={ Profile } />
 					</Switch>
 				</div>

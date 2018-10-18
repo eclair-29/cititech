@@ -22,7 +22,11 @@
     margin: 20px 0              !important
 
     .header 
-        font-size: 0.9rem       !important
+        font:
+            family: pangram_medium !important
+            size: 0.9rem !important
+            weight: 500 !important
+        color: #212121 !important
     
     .meta 
         font:
@@ -45,12 +49,18 @@
         font-size: 0.840rem     !important
         color: #BDBDBD
 
+/* MESSAGE 
+   ======================================= */
+.message 
+    border-radius: 0            !important
+    font-size: 0.840rem         !important
+
 /* NAV 
    ======================================= */
 .nav 
     max-width: 100% !important
     padding: 0 40px !important
-    height: 50px
+    height: 70px
     background: #00695C
     display: flex
     justify-content: space-between
@@ -80,7 +90,7 @@
    ======================================= */
 .notifications
     +size(350px, 100%)
-    +position(absolute, 50px 0 null null)
+    +position(absolute, 70px 0 null null)
     background: #FFFFFF
     border: 1px solid #E0E0E0
 
@@ -97,12 +107,21 @@
 .post-details
     margin-top: 40px
 
-    .post-header > h4 
-        margin-bottom: 5px
+    .post-header
+        display: flex 
+        flex-direction: column
 
-    .post-header > span 
-        font-size: 0.840rem !important 
-        color: #009688    
+        .title 
+            margin-bottom: 5px
+            font:
+                family: pangram_medium !important
+                size: 0.9rem !important
+                weight: 500 !important
+            color: #212121 !important
+            
+        span 
+            font-size: 0.840rem !important 
+            color: #009688    
 
     .post-content
         margin-top: 20px
@@ -138,7 +157,7 @@
         color: #009688   
         text-align: right
 
-/* PROFILE HEADER
+/* PROFILE NAV
    ======================================= */
 .profile-nav
     margin-top: 20px
@@ -163,12 +182,12 @@
 .signup
     max-width: 400px !important 
     margin-top: 80px
-    background: #FFFFFF
-    border: 1px solid #E0E0E0
-    padding: 20px
 
     .form 
         width: 100%
+        background: #FFFFFF
+        border: 1px solid #E0E0E0
+        padding: 20px
 
     h4 
         margin-bottom: 30px 
