@@ -1,8 +1,5 @@
 const initial_state = {
-    posts: [
-        { id: 'xD48o2', author: 'eclair.48', title: 'Squirtle laid an egg', content: 'est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla' },
-        { id: 'cG28a8', author: 'tinetine.o9', title: 'Pikachu learns a new ability', content: 'ullam et saepe reiciendis' }
-    ]
+    posts: []
 }
 
 const posts_reducer = (state = initial_state, action) => {
@@ -13,6 +10,17 @@ const posts_reducer = (state = initial_state, action) => {
             
         case 'CREATE_POST_ERROR': 
             console.log('ERROR ON POST CREATION: ', action.err)
+            return state 
+
+        case 'GET_USER_POSTS': 
+            console.log('USER POSTS: ', action.payload)
+            return {
+                ...state,
+                posts: action.payload
+            }
+
+        case 'GET_USER_POSTS_ERROR': 
+            console.log('ERROR GETTING USER POSTS: ', action.err)
             return state 
 
         default: 

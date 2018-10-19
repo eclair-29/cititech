@@ -13,30 +13,20 @@ import Todos from './Todos'
 import Activities from './Activities'
 import About from './About'
 
+// Actions 
+import { get_user_posts } from '../../store/actions/post_actions'
+
 class Profile extends Component {
-    state = {
-        posts: []
-    }
-
     componentDidMount() {
-        const { firestore, match  } = this.props
-        const user = match.params.username
+        const { posts, match } = this.props
+        const user = match.params.username 
 
-        firestore.collection('posts')
-        .where('author_username', '==', user)
-        .get()
-        .then(snapshot => {
-            const data = snapshot.docs.map(doc => doc.data())
-
-            this.setState({
-                posts: data
-            })
-        })
+        this.props.get_user_posts(user)
+        console.log(posts)
     }
 
     render() {
-        const { profile, match } = this.props
-        const { posts } = this.state
+        const { profile, match, posts } = this.props
 
         return (
             <div className="wrapper profile">
@@ -64,11 +54,11 @@ class Profile extends Component {
 const mapStateToProps = state => {
     return {
         profile: state.firebase.profile,
-        posts: state.firestore.data.posts
+        posts: state.posts.posts
     }
 }
 
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, { get_user_posts }),
     firestoreConnect()
 )(Profile)

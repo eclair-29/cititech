@@ -1,3 +1,4 @@
+// Create Post
 export const create_post = post => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         // async actions here...
@@ -14,6 +15,24 @@ export const create_post = post => {
             dispatch({ type: 'CREATE_POST', post })
         }).catch(err => {
             dispatch({ type: 'CREATE_POST_ERROR', err })
+        })
+    }
+}
+
+// Get User Posts
+export const get_user_posts = user => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore()
+
+        firestore.collection('posts')
+        .where('author_username', '==', user)
+        .get()
+        .then(snapshot => {
+            const data = snapshot.docs.map(doc => doc.data())
+            dispatch({ type: 'GET_USER_POSTS', payload: data })
+        })
+        .catch(err => {
+            dispatch({ type: 'GET_USER_POSTS_ERROR', err })
         })
     }
 }
