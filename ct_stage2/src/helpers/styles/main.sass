@@ -52,21 +52,34 @@ $blue_light:    #00B0FF
     max-width:  100% !important
     border: 1px solid #E0E0E0 !important
 
-    .header
+    .contact-content
+        display: flex
+        justify-content: space-between
+
+        .contact-info 
+            width: 100%
+
+        .remove-contact-link 
+            color: $blue_prime
+            font-size: 0.85rem !important
+            text-align: right !important
+            width: 100%
+
+    .header, .contact-info
         display: flex !important
         flex-direction: column
 
         a:nth-child(1)
             margin-bottom: 5px 
 
-    .subject 
+    .subject, .name
         font: 
             family: Pangram_Medium !important
             size: 0.9rem !important
             weight: 500 !important
         color: #212121 !important 
 
-    .recepient
+    .recepient, .username
         color: $blue_prime !important
 
     .meta 
@@ -130,6 +143,7 @@ $blue_light:    #00B0FF
 .mails
     margin-top: 150px
 
+// Mail Details
 .mail-details 
     margin: 120px auto
 
@@ -159,3 +173,93 @@ $blue_light:    #00B0FF
     .timestamp > span 
         color: tint(#212121, 50%) !important
         font-size: 0.85rem !important
+
+/* PFOFILE
+   ======================================= */
+.profile
+    margin: 120px auto
+
+    // Profile Header
+    .profile-header
+        display: flex
+        justify-content: space-between
+
+        .user 
+            display: flex
+            flex-direction: column 
+
+        .name 
+            font-size: 0.9rem !important
+            color: #212121 !important 
+            margin-bottom: 5px  
+
+        .username
+            color: tint(#212121, 50%) !important
+            font-size: 0.85rem !important
+
+    .edit-profile-link
+        color: $blue_prime
+        font-size: 0.85rem !important
+        
+    // Profile Nav 
+    .profile-nav,
+    .non-profile-nav 
+        +size(100%, 50px)
+        margin: 40px 0 20px 0
+        background: transparent
+        border: 1px solid #E0E0E0
+
+        .menu 
+            display: flex
+            height: inherit
+            justify-content: space-around
+            align-items: center
+
+        a 
+            color: $blue_prime
+            font-size: 0.9rem !important
+
+/* CONTACTS
+   ======================================= */
+.contacts
+    margin-top: 120px
+
+
+/* FORMS (SIGNIN, SINGUP, COMPOSE)
+   ======================================= */
+.signin, .signup
+    margin: 150px auto !important
+    max-width: 400px !important
+
+    .form 
+        background: transparent !important
+        border: 1px solid #E0E0E0 !important
+        padding: 20px
+
+        h4 
+            margin-bottom: 30px
+            text-align: center
+            font-size: 0.9rem !important
+
+        .button 
+            margin-top: 30px !important
+
+.compose 
+    margin: 120px auto !important
+    max-width: 580px !important 
+
+    .form 
+        background: transparent !important
+        border: 1px solid #E0E0E0 !important
+        padding: 20px
+
+        h4 
+            margin-bottom: 30px
+            font-size: 0.9rem !important
+
+        textarea
+            resize: none !important
+
+        .button 
+            margin-top: 30px !important
+

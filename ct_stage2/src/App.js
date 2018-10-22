@@ -9,6 +9,9 @@ import Inbox from './components/inbox/Inbox'
 import MailDetails from './components/mails/MailsDetails'
 import Profile from './components/profile/Profile'
 import Contacts from './components/contacts/Contacts'
+import SignIn from './components/auth/SignIn'
+import SignUp from './components/auth/SignUp'
+import Compose from './components/mails/Compose'
 
 class App extends Component {
 	render() {
@@ -23,6 +26,9 @@ class App extends Component {
 						<Route path="/mail" component={ MailDetails } />
 						<Route path="/profile" component={ Profile } />
 						<Route path="/contacts" component={ Contacts } />
+						<Route path="/signin" component={ SignIn } />
+						<Route path="/signup" component={ SignUp } />
+						<Route path="/compose" component={ Compose } />
 					</Switch>
 				</div>
 			</BrowserRouter>

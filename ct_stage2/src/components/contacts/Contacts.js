@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
 
+// Components
+import ContactsSummary from './ContactsSummary'
 
 class Contacts extends Component {
     render() {
         return (
             <div className="wrapper contacts">
-                <h4 style={{
-                    textAlign: 'center',
-                    marginTop: '120px'
-                }}>
-                    Contacts
-                </h4>
+               <ContactsSummary />
             </div>
         )
     }

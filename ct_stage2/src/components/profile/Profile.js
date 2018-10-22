@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 
+// Components
+import ProfileHeader from './ProfileHeader'
+import ProfileNav from './ProfileNav'
 
 class Profile extends Component {
     render() {
         return (
             <div className="wrapper profile">
-                <h4 style={{
-                    textAlign: 'center',
-                    marginTop: '120px'
-                }}>
-                    Profile
-                </h4>
+                {/* Header */}
+                <ProfileHeader />
+
+                {/* Navs */}
+                <ProfileNav />
             </div>
         )
     }
