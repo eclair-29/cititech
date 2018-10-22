@@ -143,9 +143,27 @@ $blue_light:    #00B0FF
 .mails
     margin-top: 150px
 
+// Breadcrumbs
+.mail-container > .breadcrumb
+    +size(100%, 50px)
+    +position(fixed, 70px null null 0)
+    display: flex
+    align-items: center
+    padding: 0 40px
+    z-index: 1
+
+    a 
+        color: $blue_prime
+        font:
+            family: Pangram !important 
+            size: 0.9rem !important
+
+    i 
+        font-size: 0.9rem !important
+
 // Mail Details
 .mail-details 
-    margin: 120px auto
+    margin: 150px auto
 
     .mail-header
         display: flex

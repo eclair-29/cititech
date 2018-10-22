@@ -3,10 +3,12 @@ import React from 'react'
 // Components
 import MailsSummary from './MailsSummary'
 
-const Mails = () => {
+const Mails = ({ mails }) => {
     return (
         <div className="mails">
-            <MailsSummary />
+            { mails && mails.map(mail => {
+                return <MailsSummary mail={ mail } key={ mail.id } />
+            }) }
         </div>
     )
 }

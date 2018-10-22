@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 // Components 
 import Breadcrumbs from './Breadcrumbs'
@@ -8,6 +9,8 @@ import Mails from '../mails/Mails'
 
 class Inbox extends Component {
     render() {
+        const { mails } = this.props
+
         return (
             <div className="inbox">
                 {/* Breadcrumbs */}
@@ -17,7 +20,7 @@ class Inbox extends Component {
                 <Filters />
 
                 <div className="wrapper">
-                    <Mails />
+                    <Mails mails={ mails } />
                 </div>
 
                 {/* Notifications */}
@@ -27,4 +30,10 @@ class Inbox extends Component {
     }
 }
 
-export default Inbox
+const mapStateToProps = state => {
+    return {
+        mails: state.mails.mails
+    }
+}
+
+export default connect(mapStateToProps)(Inbox)

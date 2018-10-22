@@ -1,17 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MailsSummary = () => {
+const MailsSummary = ({ mail }) => {
     return (
         <div className="ui card mail">
             {/* Mail header */}
             <div className="content">
                 <div className="header">
-                    <Link to="/">
-                        <span className="subject title">1st Email from a Contact</span>
+                    <Link to={ `/mails/${mail.id}` }>
+                        <span className="subject title">
+                            { mail.subject }
+                        </span>
                     </Link>
-                    <Link to="/">
-                        <span className="recepient">from tine.o9</span>
+                    <Link to={ `/${mail.authorUsername}` }>
+                        <span className="recepient">
+                            from { mail.authorUsername }
+                        </span>
                     </Link>
                 </div>
             </div>
