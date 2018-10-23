@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+// Actions
+import { composeMail } from '../../store/actions/mailsActions'
 
 class Compose extends Component {
     state = {
@@ -15,7 +19,7 @@ class Compose extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        console.log(this.state)
+        this.props.composeMail(this.state)
     }
 
     render() {
@@ -71,4 +75,4 @@ class Compose extends Component {
     }
 }
 
-export default Compose
+export default connect(null, { composeMail })(Compose)

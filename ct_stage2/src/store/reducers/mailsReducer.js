@@ -6,8 +6,19 @@ const initialState = {
     ]
 }
 
-const mailsReducer = (state = initialState, actions) => {
-    return state
+const mailsReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'COMPOSE_MAIL': 
+            console.log('MAIL IS SENT SUCCESSFULLY: ', action.payload)
+            return state
+
+        case 'COMPOSE_MAIL_ERROR':
+            console.log('ERROR SENDING MAIL: ', action.payload)
+            return state
+
+        default: 
+            return state
+    }
 }
 
 export default mailsReducer

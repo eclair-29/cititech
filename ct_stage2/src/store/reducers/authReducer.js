@@ -1,6 +1,6 @@
 const initialState = {}
 
-const authReducer = (state = initialState, actions) => {
+const authReducer = (state = initialState, action) => {
     return state
 }
 

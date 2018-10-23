@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Breadcrumbs = ({ mail }) => {
+const Breadcrumbs = ({ mail, match }) => {
     return (
         <div className="ui breadcrumb">
             <Link to="/" className="section">
@@ -12,7 +12,7 @@ const Breadcrumbs = ({ mail }) => {
                 <div>
                     <i className="right angle icon divider"></i>
                 
-                    <Link to="/" className="section">
+                    <Link to={ match.url } className="section">
                         { mail.subject }
                     </Link>
                 </div>

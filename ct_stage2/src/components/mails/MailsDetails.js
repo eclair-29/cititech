@@ -6,12 +6,15 @@ import Breadcrumbs from '../inbox/Breadcrumbs'
 
 class MailDetails extends Component {
     render() {
-        const { mail } = this.props
+        const { mail, match } = this.props
 
         return (
             <main className="mail-container">
                 {/* Breadcrumb */}
-                <Breadcrumbs mail={ mail } />
+                <Breadcrumbs 
+                    mail={ mail } 
+                    match={ match }
+                />
 
                 {/* Mail Contents */}
                 <div className="wrapper mail-details">
@@ -22,7 +25,7 @@ class MailDetails extends Component {
                         </span>
                         <span className="recepient">
                             from { mail.authorUsername }
-                            </span>
+                        </span>
                     </div>
 
                     {/* Mail Content */}
