@@ -20,6 +20,7 @@ class Compose extends Component {
     handleSubmit = e => {
         e.preventDefault()
         this.props.composeMail(this.state)
+        this.props.history.push('/')
     }
 
     render() {

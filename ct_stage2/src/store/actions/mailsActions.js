@@ -1,3 +1,4 @@
+// Create Mail
 export const composeMail = mail => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore()
