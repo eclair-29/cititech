@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 
 // Components 
 import Breadcrumbs from './Breadcrumbs'
@@ -31,9 +33,15 @@ class Inbox extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state);
     return {
-        mails: state.mails.mails
+        mails: state.firestore.ordered.mails
     }
 }
 
-export default connect(mapStateToProps)(Inbox)
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: 'mails' }
+    ])
+)(Inbox)
