@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
 
 // Components
 import Breadcrumbs from '../inbox/Breadcrumbs'
 
 class MailDetails extends Component {
     render() {
-        const { mail, match } = this.props
+        const { mail, match, auth } = this.props
+
+        if (!auth.uid) return <Redirect to="/signin" />
 
         return (
             <main className="mail-container">
@@ -53,7 +56,8 @@ const mapStateToProps = (state, ownProps) => {
     let mail = mails ? mails[id] : null
 
     return {
-        mail: mail
+        mail: mail,
+        auth: state.firebase.auth
     }
 }
 

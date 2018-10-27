@@ -1,5 +1,6 @@
 const initialState = {
-    authError: null
+    authError: null,
+    users: []
 }
 
 const authReducer = (state = initialState, action) => {
@@ -37,6 +38,13 @@ const authReducer = (state = initialState, action) => {
         case 'SINGOUT_SUCCESSFULL': 
             console.log('You\'ve signed out from your account')
             return state
+
+        case 'FETCH_USER_PROFILE':
+            console.log(action.payload)
+            return {
+                ...state,
+                users: action.payload
+            }
 
         default:
             return state
