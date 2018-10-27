@@ -2,12 +2,14 @@
 export const composeMail = mail => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore()
+        const profile = getState().firebase.profile
+        const uid = getState().firebase.auth.uid
 
         firestore.collection('mails')
         .add({
             ...mail,
-            authorID: '12345',
-            authorUsername: 'eclair.29',
+            authorID: uid,
+            authorUsername: profile.username,
             createdAt: new Date()
         }).then(() => {
             dispatch({

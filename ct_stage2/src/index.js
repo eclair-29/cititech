@@ -26,7 +26,9 @@ const store = createStore(
         })),
         reduxFirestore(__firebase_config),
         reactReduxFirebase(__firebase_config, {
-            attachAuthIsReady: true
+            attachAuthIsReady: true,
+            useFirestoreForProfile: true,
+            userProfile: 'users'
         })
     )
 );

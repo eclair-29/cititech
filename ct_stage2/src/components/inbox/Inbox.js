@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
 
 // Components 
 import Breadcrumbs from './Breadcrumbs'
@@ -11,7 +12,9 @@ import Mails from '../mails/Mails'
 
 class Inbox extends Component {
     render() {
-        const { mails } = this.props
+        const { mails, auth } = this.props
+
+        if (!auth.uid) return <Redirect to="/signin" />
 
         return (
             <div className="inbox">
@@ -33,9 +36,9 @@ class Inbox extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
-        mails: state.firestore.ordered.mails
+        mails: state.firestore.ordered.mails,
+        auth: state.firebase.auth
     }
 }
 
