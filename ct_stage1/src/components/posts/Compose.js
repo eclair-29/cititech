@@ -27,7 +27,7 @@ class Compose extends Component {
         const { auth } = this.props
 
         //  Check if the user is signed in or not
-         if (!auth.uid) return <Redirect  to='/signin' />
+        if (!auth.uid) return <Redirect  to='/signin' />
 
         return (
             <div className="wrapper compose">
