@@ -5,7 +5,7 @@ import { compose } from 'redux'
 
 import ProfileHeader from './ProfileHeader'
 import ProfileNav from './ProfileNav'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 // Routes
 import UserPosts from './UserPosts'
@@ -15,18 +15,25 @@ import About from './About'
 
 // Actions 
 import { get_user_posts } from '../../store/actions/post_actions'
+// import { fetctUserProfile } from '../../store/actions/auth_actions'
 
 class Profile extends Component {
     componentDidMount() {
         const { posts, match } = this.props
         const user = match.params.username 
 
+        // Get all posts made by this user
         this.props.get_user_posts(user)
         console.log(posts)
+
+        // Get User's Profile
+        //this.props.fetctUserProfile(user)
     }
 
     render() {
-        const { profile, match, posts } = this.props
+        const { profile, match, posts, auth } = this.props
+
+        if (!auth.uid) return <Redirect to="/signin" />
 
         return (
             <div className="wrapper profile">
@@ -54,7 +61,8 @@ class Profile extends Component {
 const mapStateToProps = state => {
     return {
         profile: state.firebase.profile,
-        posts: state.posts.posts
+        posts: state.posts.posts,
+        auth: state.firebase.auth
     }
 }
 

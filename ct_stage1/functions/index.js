@@ -32,3 +32,23 @@ exports.postCreated = functions.firestore
 
         return createNotification(notification);
     })
+
+// // New User Created function trigger
+exports.userJoined = functions.auth
+    .user()
+    .onCreate(user => {
+        return admin.firestore()
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then(doc => {
+            const user = doc.data()
+            const notification = {
+                content: 'joined cititech',
+                username: user.username,
+                timestamp: admin.firestore.FieldValue.serverTimestamp()
+            }
+            
+            return createNotification(notification)
+        })
+    })

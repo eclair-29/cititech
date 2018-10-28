@@ -38,7 +38,7 @@ export const signup = newUser => {
     }
 }
 
-//Sign Out User
+// Sign Out User
 export const  signout = () => {
     return (dispatch, getState, { getFirebase }) => {
         const firebase = getFirebase()
@@ -46,6 +46,24 @@ export const  signout = () => {
         firebase.auth().signOut()
         .then(() => {
             dispatch({ type: 'SIGNOUT_SUCCESS' })
+        })
+    }
+}
+
+// Fetch User's Profile
+export const fetctUserProfile = username => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore()
+
+        firestore.collection('users')
+        .where('username', '==', username)
+        .get()
+        .then(snapshot => {
+            const data = snapshot.docs.map(doc => doc.data())
+            dispatch({
+                type: 'FETCH_USER_PROFILE',
+                payload: data
+            })
         })
     }
 }

@@ -9,7 +9,7 @@ import Notifications from './Notifications'
 
 class Inbox extends Component {
     render() {
-        const { posts, auth } = this.props
+        const { posts, auth, notifications } = this.props
 
         //  Check if the user is signed in or not
         if (!auth.uid) return <Redirect  to='/signin' />
@@ -20,22 +20,31 @@ class Inbox extends Component {
                 <PostsList posts={ posts } />
                 
                 {/* Notifications */}
-                <Notifications />
+                <Notifications notifs={ notifications } />
             </div>
         )
     }
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         posts: state.firestore.ordered.posts,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        notifications: state.firestore.ordered.notifications
     }
 }
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'posts' }
+        { 
+            collection: 'posts',
+            orderBy: [ 'posted_at', 'desc' ] 
+        },
+        { 
+            collection: 'notifications',
+            orderBy: [ 'timestamp', 'desc' ] 
+        }
     ])
 )(Inbox)
